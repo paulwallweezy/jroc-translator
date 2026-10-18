@@ -108,6 +108,241 @@
     something: ["somethin'"], nothing: ["nothin'", "nada"], please: ["c'mon", "please"],
     with: ["wit'", "with"], what: ["what", "whut"], this: ["dis", "this"], that: ["dat", "that"]
   };
+  // ---- Funny roundabout J-Roc synonyms (original, PG-13) ----
+  // Verbs: input forms -> output options per form, so pee/peeing/peed/pees all read right.
+  const V = (forms, out, obj) => ({ forms, out, obj });
+  const TRANSITIVE = {};  // key -> options used when an object follows
+  const FUNNY_VERBS = [
+    V({ base: ["pee", "piss", "take a leak", "take a piss", "go pee", "go to the bathroom", "go to the toilet", "use the bathroom", "use the toilet"],
+        ing: ["peeing", "pissing", "taking a leak", "taking a piss", "going to the bathroom", "going to the toilet", "using the bathroom"],
+        past: ["peed", "took a leak", "took a piss", "went to the bathroom", "went to the toilet", "used the bathroom"],
+        s: ["pees", "takes a leak", "goes to the bathroom"] },
+      { base: ["drain da main vein", "go make some yellow rain", "hit da porcelain studio"],
+        ing: ["drainin' da main vein", "makin' some yellow rain", "hittin' da porcelain studio"],
+        past: ["drained da main vein", "made some yellow rain", "hit da porcelain studio"],
+        s: ["drains da main vein", "makes some yellow rain", "hits da porcelain studio"] }),
+    V({ base: ["poop", "crap", "take a dump", "take a crap", "take a shit", "go number two"],
+        ing: ["pooping", "crapping", "taking a dump", "taking a crap", "taking a shit"],
+        past: ["pooped", "crapped", "took a dump", "took a crap", "took a shit"], s: ["poops", "takes a dump"] },
+      { base: ["drop off a package at da porcelain office", "make a deposit at da bank of brown", "drop a number-two mixtape"],
+        ing: ["droppin' off a package at da porcelain office", "makin' a deposit at da bank of brown", "droppin' a number-two mixtape"],
+        past: ["dropped off a package at da porcelain office", "made a deposit at da bank of brown", "dropped a number-two mixtape"],
+        s: ["drops off a package at da porcelain office", "makes a deposit at da bank of brown", "drops a number-two mixtape"] }),
+    V({ base: ["fart", "pass gas"], ing: ["farting", "passing gas"], past: ["farted", "passed gas"], s: ["farts"] },
+      { base: ["drop a bass note", "play da butt trumpet", "release some stank beats"],
+        ing: ["droppin' a bass note", "playin' da butt trumpet", "releasin' some stank beats"],
+        past: ["dropped a bass note", "played da butt trumpet", "released some stank beats"],
+        s: ["drops a bass note", "plays da butt trumpet", "releases some stank beats"] }),
+    V({ base: ["puke", "throw up", "vomit"], ing: ["puking", "throwing up", "vomiting"], past: ["puked", "threw up", "vomited"], s: ["pukes", "throws up"] },
+      { base: ["give da toilet a remix", "send lunch back to da kitchen", "blow chunks fo' real"],
+        ing: ["givin' da toilet a remix", "sendin' lunch back to da kitchen", "blowin' chunks fo' real"],
+        past: ["gave da toilet a remix", "sent lunch back to da kitchen", "blew chunks fo' real"],
+        s: ["gives da toilet a remix", "sends lunch back to da kitchen", "blows chunks fo' real"] }),
+    V({ base: ["sleep", "nap", "take a nap", "go to bed", "go to sleep"], ing: ["sleeping", "napping", "taking a nap", "going to bed", "going to sleep"],
+        past: ["slept", "napped", "took a nap", "went to bed", "went to sleep"], s: ["sleeps", "naps"] },
+      { base: ["recharge da J-Roc battery", "hit da pillow studio", "go count some Z's, dawg"],
+        ing: ["rechargin' da J-Roc battery", "hittin' da pillow studio", "countin' Z's, dawg"],
+        past: ["recharged da J-Roc battery", "hit da pillow studio", "counted some Z's"],
+        s: ["recharges da J-Roc battery", "hits da pillow studio", "counts some Z's"] }),
+    V({ base: ["wake up", "get up"], ing: ["waking up", "getting up"], past: ["woke up", "got up"], s: ["wakes up", "gets up"] },
+      { base: ["reboot da J-Roc system", "rise an' grind", "climb outta da pillow studio"],
+        ing: ["rebootin' da J-Roc system", "risin' an' grindin'", "climbin' outta da pillow studio"],
+        past: ["rebooted da J-Roc system", "rose an' grinded", "climbed outta da pillow studio"],
+        s: ["reboots da J-Roc system", "rises an' grinds", "climbs outta da pillow studio"] }),
+    V({ base: ["eat", "have dinner", "have lunch", "have breakfast", "grab a bite"], ing: ["eating", "having dinner", "having lunch", "having breakfast"],
+        past: ["ate", "had dinner", "had lunch", "had breakfast"], s: ["eats"] },
+      { base: ["feed da beast", "get da grub on", "load up da belly"],
+        ing: ["feedin' da beast", "gettin' da grub on", "loadin' up da belly"],
+        past: ["fed da beast", "got da grub on", "loaded up da belly"],
+        s: ["feeds da beast", "gets da grub on", "loads up da belly"] },
+      { base: ["chow down on", "demolish", "feast on"], ing: ["chowin' down on", "demolishin'", "feastin' on"],
+        past: ["chowed down on", "demolished", "feasted on"], s: ["chows down on", "demolishes", "feasts on"] }),
+    V({ base: ["drink", "have a drink", "have a beer", "grab a beer"], ing: ["drinking", "having a drink", "having a beer"],
+        past: ["drank", "had a drink", "had a beer"], s: [] },
+      { base: ["get da sip on", "crack open some liquid inspiration", "hydrate da hustle"],
+        ing: ["gettin' da sip on", "crackin' open some liquid inspiration", "hydratin' da hustle"],
+        past: ["got da sip on", "cracked open some liquid inspiration", "hydrated da hustle"], s: [] },
+      { base: ["sip on", "pound", "slurp down"], ing: ["sippin' on", "poundin'", "slurpin' down"], past: ["sipped on", "pounded", "slurped down"], s: [] }),
+    V({ base: ["shower", "take a shower", "have a shower", "take a bath", "bathe"], ing: ["showering", "taking a shower", "taking a bath"],
+        past: ["showered", "took a shower", "took a bath"], s: ["showers", "takes a shower"] },
+      { base: ["hit da human car wash", "run da J-Roc rinse cycle", "step into da wet booth"],
+        ing: ["hittin' da human car wash", "runnin' da J-Roc rinse cycle", "steppin' into da wet booth"],
+        past: ["hit da human car wash", "ran da J-Roc rinse cycle", "stepped into da wet booth"],
+        s: ["hits da human car wash", "runs da J-Roc rinse cycle", "steps into da wet booth"] }),
+    V({ base: ["work on my music", "work on my songs", "work on my raps", "write songs", "write a song"],
+        ing: ["working on my music", "working on my songs", "working on my raps", "writing songs", "writing a song"],
+        past: ["worked on my music", "worked on my songs", "wrote songs", "wrote a song"], s: ["works on his music", "writes songs"] },
+      { base: ["work on ma rhymes", "cook up some fresh verses", "lay down some phat lyrical cheddar"],
+        ing: ["workin' on ma rhymes", "cookin' up some fresh verses", "layin' down some phat lyrical cheddar"],
+        past: ["worked on ma rhymes", "cooked up some fresh verses", "laid down some phat lyrical cheddar"],
+        s: ["works on his rhymes", "cooks up some fresh verses", "lays down some phat lyrical cheddar"] }),
+    V({ base: ["work", "go to work"], ing: ["working", "going to work"], past: ["worked", "went to work"], s: ["works", "goes to work"] },
+      { base: ["grind fo' da cheddar", "handle bizness", "clock in at da hustle"],
+        ing: ["grindin' fo' da cheddar", "handlin' bizness", "clockin' in at da hustle"],
+        past: ["grinded fo' da cheddar", "handled bizness", "clocked in at da hustle"],
+        s: ["grinds fo' da cheddar", "handles bizness", "clocks in at da hustle"] }),
+    V({ base: ["sing", "rap"], ing: ["singing", "rapping"], past: ["sang", "rapped"], s: ["sings", "raps"] },
+      { base: ["spit some rhymes", "drop some fresh verses", "lay down da flow"],
+        ing: ["spittin' some rhymes", "droppin' fresh verses", "layin' down da flow"],
+        past: ["spit some rhymes", "dropped some fresh verses", "laid down da flow"],
+        s: ["spits rhymes", "drops fresh verses", "lays down da flow"] }),
+    V({ base: ["dance"], ing: ["dancing"], past: ["danced"], s: ["dances"] },
+      { base: ["bust a move", "shake da J-Roc thang", "break out da fancy feet"],
+        ing: ["bustin' a move", "shakin' da J-Roc thang", "breakin' out da fancy feet"],
+        past: ["busted a move", "shook da J-Roc thang", "broke out da fancy feet"],
+        s: ["busts a move", "shakes da J-Roc thang", "breaks out da fancy feet"] }),
+    V({ base: ["smoke", "have a smoke", "have a cigarette"], ing: ["smoking", "having a smoke"], past: ["smoked", "had a smoke"], s: ["smokes"] },
+      { base: ["puff on a lil' chimney", "burn a cancer stick", "go make some clouds"],
+        ing: ["puffin' on a lil' chimney", "burnin' a cancer stick", "makin' some clouds"],
+        past: ["puffed on a lil' chimney", "burned a cancer stick", "made some clouds"],
+        s: ["puffs on a lil' chimney", "burns a cancer stick", "makes some clouds"] },
+      { base: ["puff on", "burn through", "blaze"], ing: ["puffin' on", "burnin' through", "blazin'"], past: ["puffed on", "burned through", "blazed"], s: ["puffs on", "burns through", "blazes"] }),
+    V({ base: ["call", "text", "phone"], ing: ["calling", "texting", "phoning"], past: ["called", "texted", "phoned"], s: ["calls", "texts"] },
+      { base: ["holla at", "hit up", "ring da bling-a-ling of"],
+        ing: ["hollerin' at", "hittin' up", "ringin' da bling-a-ling of"],
+        past: ["holla'd at", "hit up", "rang da bling-a-ling of"],
+        s: ["hollas at", "hits up", "rings da bling-a-ling of"] }),
+    V({ base: ["drive"], ing: ["driving"], past: ["drove"], s: ["drives"] },
+      { base: ["roll da whip", "steer da pimp chariot", "cruise da rollin' studio"],
+        ing: ["rollin' da whip", "steerin' da pimp chariot", "cruisin' da rollin' studio"],
+        past: ["rolled da whip", "steered da pimp chariot", "cruised da rollin' studio"],
+        s: ["rolls da whip", "steers da pimp chariot", "cruises da rollin' studio"] }),
+    V({ base: ["cook", "make dinner"], ing: ["cooking", "making dinner"], past: ["cooked", "made dinner"], s: ["cooks"] },
+      { base: ["whip up some kitchen magic", "work da flame station", "remix some groceries"],
+        ing: ["whippin' up some kitchen magic", "workin' da flame station", "remixin' some groceries"],
+        past: ["whipped up some kitchen magic", "worked da flame station", "remixed some groceries"],
+        s: ["whips up some kitchen magic", "works da flame station", "remixes some groceries"] },
+      { base: ["whip up", "flame-grill", "cook up"], ing: ["whippin' up", "flame-grillin'", "cookin' up"], past: ["whipped up", "flame-grilled", "cooked up"], s: ["whips up", "flame-grills", "cooks up"] }),
+    V({ base: ["clean", "clean up", "do the dishes"], ing: ["cleaning", "cleaning up", "doing the dishes"], past: ["cleaned", "cleaned up", "did the dishes"], s: ["cleans"] },
+      { base: ["make it fresh an' fly", "do da sparkle routine", "scrub it up gangsta style"],
+        ing: ["makin' it fresh an' fly", "doin' da sparkle routine", "scrubbin' it up gangsta style"],
+        past: ["made it fresh an' fly", "did da sparkle routine", "scrubbed it up gangsta style"],
+        s: ["makes it fresh an' fly", "does da sparkle routine", "scrubs it up gangsta style"] }),
+    V({ base: ["watch tv", "watch television", "watch a movie", "watch movies"], ing: ["watching tv", "watching television", "watching a movie", "watching movies"],
+        past: ["watched tv", "watched television", "watched a movie"], s: ["watches tv"] },
+      { base: ["stare at da glow box", "zone out in front of da idiot box", "catch some flicks"],
+        ing: ["starin' at da glow box", "zonin' out in front of da idiot box", "catchin' some flicks"],
+        past: ["stared at da glow box", "zoned out in front of da idiot box", "caught some flicks"],
+        s: ["stares at da glow box", "zones out in front of da idiot box", "catches some flicks"] }),
+    V({ base: ["go shopping", "go to the store"], ing: ["shopping", "going shopping", "going to the store"], past: ["went shopping", "went to the store", "shopped"], s: ["goes shopping"] },
+      { base: ["hit up da bling market", "go on a cheddar-spendin' mission", "make it rain at da corner store"],
+        ing: ["hittin' up da bling market", "goin' on a cheddar-spendin' mission", "makin' it rain at da corner store"],
+        past: ["hit up da bling market", "went on a cheddar-spendin' mission", "made it rain at da corner store"],
+        s: ["hits up da bling market", "goes on a cheddar-spendin' mission", "makes it rain at da corner store"] }),
+    V({ base: ["hurry", "hurry up"], ing: ["hurrying"], past: ["hurried"], s: ["hurries"] },
+      { base: ["get da lead outta ya kicks", "turbo it up, dawg", "move it like da po-po's comin'"],
+        ing: ["gettin' da lead outta ya kicks", "turboin' it up", "movin' like da po-po's comin'"],
+        past: ["got da lead outta ya kicks", "turbo'd it up", "moved like da po-po was comin'"],
+        s: ["gets da lead out", "turbos it up", "moves like da po-po's comin'"] })
+  ];
+  // Nouns/adjectives: [input keys], [options]. No leading "da" so "the X" -> "da X" reads right.
+  const FUNNY_NOUNS = [
+    [["bathroom", "toilet", "restroom", "washroom", "loo", "potty"], ["porcelain studio", "throne room", "lil' J-Roc office"]],
+    [["urine"], ["yellow rain", "lemonade remix", "vein juice"]],
+    [["poo", "feces"], ["brown mixtape", "number-two bizness", "booty nuggets"]],
+    [["toilet paper"], ["booty bling scrolls", "porcelain paperwork", "wipe-a-licious"]],
+    [["turntable", "record player"], ["lazy Susan", "spinny beat plate", "record merry-go-round"]],
+    [["turntables"], ["lazy Susans", "spinny beat plates", "record merry-go-rounds"]],
+    [["music"], ["rhymes", "beats", "sonic hustle"]],
+    [["song", "track"], ["fresh rhyme", "phat joint", "ear candy"]],
+    [["songs", "tracks"], ["fresh rhymes", "phat joints", "ear candies"]],
+    [["rap", "raps", "lyrics"], ["rhymes", "verses", "word bombs"]],
+    [["album", "cd"], ["mixtape", "fire tape", "platinum dream"]],
+    [["microphone", "mic"], ["truth stick", "rhyme stick", "voice wand"]],
+    [["car"], ["whip", "pimp chariot", "rollin' studio"]],
+    [["cars"], ["whips", "pimp chariots", "rollin' studios"]],
+    [["truck"], ["big whip", "monster chariot", "pickup palace"]],
+    [["bike", "bicycle"], ["pedal whip", "two-wheel chariot", "leg-powered Benz"]],
+    [["bus", "school bus"], ["big yellow limo", "kid cruiser", "long whip"]],
+    [["school"], ["knowledge factory", "brain gym", "learnin' crib"]],
+    [["teacher"], ["knowledge dealer", "brain coach", "homework boss"]],
+    [["teachers"], ["knowledge dealers", "brain coaches", "homework bosses"]],
+    [["homework"], ["brain chores", "paper hustle", "nerd work"]],
+    [["seat"], ["throne", "cushion spot", "booty parkin' spot"]],
+    [["seats"], ["thrones", "cushion spots", "booty parkin' spots"]],
+    [["seatbelt", "seat belt"], ["safety bling", "lap leash", "strap of survival"]],
+    [["driver", "bus driver"], ["captain", "wheel boss", "chauffeur, dawg,"]],
+    [["house", "apartment"], ["crib", "palace", "headquarters"]],
+    [["trailer"], ["crib on wheels", "tin palace", "J-Roc estate"]],
+    [["trailer park"], ["hood", "estate", "block"]],
+    [["bedroom"], ["chill chamber", "snooze lounge", "dream studio"]],
+    [["kitchen"], ["grub lab", "snack studio", "flavor factory"]],
+    [["couch", "sofa"], ["chill throne", "booty cushion", "lazy-boy lounge"]],
+    [["bed"], ["pillow studio", "snooze throne", "dream pad"]],
+    [["beer"], ["liquid inspiration", "bubbly cheddar juice", "brown-bottle bling"]],
+    [["beers"], ["brewskis", "liquid inspirations", "bottles of bubbly cheddar juice"]],
+    [["booze", "liquor", "alcohol"], ["grown-up juice", "party sauce", "liquid courage"]],
+    [["coffee"], ["bean juice", "wake-up sauce", "rocket fuel"]],
+    [["water"], ["H2-flow", "clear juice", "thirst killer"]],
+    [["soda"], ["fizzy juice", "bubble drank", "sugar fizz"]],
+    [["food"], ["grub", "belly fuel", "munchie supply"]],
+    [["snack", "snacks"], ["munchies", "lil' grub", "belly bling"]],
+    [["dinner", "supper"], ["night grub", "big feast", "evenin' munchies"]],
+    [["lunch"], ["midday grub", "noon feast", "lunchtime munchies"]],
+    [["breakfast"], ["mornin' grub", "wake-up feast", "sunrise munchies"]],
+    [["pizza"], ["cheesy circle of power", "za pie", "round grub"]],
+    [["burger", "hamburger"], ["beef stack", "meat sandwich of glory", "patty palace"]],
+    [["chips"], ["crunch snacks", "salty bling", "crunchy cheddar"]],
+    [["phone", "cell phone", "cellphone", "smartphone"], ["hip telephone", "bling-a-ling", "pocket hotline"]],
+    [["computer", "laptop"], ["beat machine", "internet box", "cyber crib"]],
+    [["internet"], ["cyber hood", "web streets", "info highway"]],
+    [["tv", "television"], ["glow box", "idiot box", "picture box"]],
+    [["remote"], ["clicker of power", "channel wand", "couch scepter"]],
+    [["girlfriend"], ["shorty", "main squeeze", "lady friend"]],
+    [["boyfriend"], ["main man", "lover boy", "dude squeeze"]],
+    [["wife"], ["wifey", "main lady", "ball an' chain"]],
+    [["husband"], ["hubby", "main man", "old man"]],
+    [["baby"], ["lil' homie", "mini dawg", "pint-size gangsta"]],
+    [["kid", "child"], ["lil' homie", "mini dawg", "rugrat"]],
+    [["kids", "children"], ["lil' homies", "mini dawgs", "rugrats"]],
+    [["mom", "mother", "mum", "mommy", "mama"], ["moms", "queen bee", "mama J"]],
+    [["dad", "father", "daddy"], ["pops", "OG pops", "old man"]],
+    [["grandma", "grandmother"], ["granny G", "nana", "OG mama"]],
+    [["grandpa", "grandfather"], ["grandpappy", "OG pops", "granddawg"]],
+    [["brother"], ["bro", "blood", "brotha"]],
+    [["sister"], ["sis", "sista", "lil' homegirl"]],
+    [["family"], ["fam", "crew", "posse"]],
+    [["boss", "manager"], ["big cheese", "head honcho", "top dawg"]],
+    [["neighbor", "neighbour"], ["next-door homie", "block buddy", "fence dawg"]],
+    [["job"], ["hustle", "nine-to-five grind", "cheddar factory"]],
+    [["jobs"], ["hustles", "grinds", "cheddar factories"]],
+    [["at work"], ["at da hustle", "at da cheddar factory", "on da clock"]],
+    [["cigarette"], ["cancer stick", "lil' chimney", "smoke stick"]],
+    [["cigarettes"], ["cancer sticks", "lil' chimneys", "smoke sticks"]],
+    [["weed", "marijuana", "cannabis"], ["jungle salad", "wacky lettuce", "green stuff"]],
+    [["store", "shop", "supermarket", "grocery store"], ["bling market", "cheddar tradin' post", "corner spot"]],
+    [["mall"], ["bling palace", "shoppin' castle", "cheddar drain"]],
+    [["gas station"], ["whip juice bar", "fuel spot", "gas-n-snack"]],
+    [["dog"], ["four-legged homie", "woof dawg", "barkin' bodyguard"]],
+    [["dogs"], ["four-legged homies", "woof dawgs", "barkin' bodyguards"]],
+    [["cat"], ["meow homie", "lil' furry gangsta", "whisker dawg"]],
+    [["cats"], ["meow homies", "lil' furry gangstas", "whisker crew"]],
+    [["clothes", "outfit"], ["threads", "drip", "fly gear"]],
+    [["shoes", "sneakers"], ["kicks", "foot bling", "toe whips"]],
+    [["hat", "cap"], ["lid", "dome bling", "head throne"]],
+    [["sunglasses", "glasses"], ["shades", "eye bling", "face windows"]],
+    [["jewelry", "necklace", "chain"], ["bling", "neck cheddar", "shiny shiny"]],
+    [["doctor"], ["body mechanic", "pill wizard", "health dawg"]],
+    [["hospital"], ["fix-it crib", "bandage palace", "doc's hood"]],
+    [["jail", "prison"], ["big house", "gated crib", "time-out hotel"]],
+    [["lawyer"], ["legal homie", "court dawg", "paper warrior"]],
+    [["party"], ["shindig", "jam", "bash"]],
+    [["plan", "idea"], ["master plan", "vision", "scheme"]],
+    [["problem"], ["beef", "drama", "situation"]],
+    [["hungry"], ["starvin' like a rapper", "hearin' da belly drums", "feelin' grub-deficient"]],
+    [["tired", "sleepy"], ["runnin' on low battery", "beat like a drum", "low on J-Roc juice"]],
+    [["drunk"], ["full of liquid inspiration", "wobbly like a lazy Susan", "sauced up"]]
+  ];
+  for (const { forms, out, obj } of FUNNY_VERBS)
+    for (const f of Object.keys(forms))
+      for (const k of forms[f]) { PHRASES[k] = out[f]; if (obj && obj[f] && obj[f].length && !k.includes(" ")) TRANSITIVE[k] = obj[f]; }
+  // "before school" -> "before da knowledge factory" etc. (bare nouns that need an article)
+  for (const prep of ["to", "at", "before", "after", "from", "in", "for"]) {
+    PHRASES[prep + " school"] = ["knowledge factory", "brain gym", "learnin' crib"].map((o) => prep + " da " + o);
+  }
+  PHRASES["in bed"] = ["in da pillow studio", "on da snooze throne", "in da dream pad"];
+  for (const [keys, opts] of FUNNY_NOUNS) for (const k of keys) PHRASES[k] = opts;
+  const NOT_OBJECT = new Set(["then", "and", "or", "but", "so", "at", "in", "on", "with", "before", "after", "because", "now", "today", "tonight", "later", "too", "real", "really", "first", "again", "all", "outside", "here", "there", "every", "when", "while", "if", "fast", "slowly", "together", "alone", "like", "for", "out"]);
   const OPENERS = ["Yo,", "Aight check it,", "Yo yo,", "Listen up,", "Check it,"];
   const CLOSERS = [", know'm sayin'?", ", word up.", ", straight up, dawg.", ". J-Roc out.", ", feel me?", ", fo' real."];
   const ASIDES = ["cuz J-Roc's an entrepreneur, dawg", "that's how J-Roc rolls", "J-Roc keeps it real",
@@ -118,7 +353,7 @@
   function rngFrom(seed) { let a = seed >>> 0; return function () { a = (a + 0x6D2B79F5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
   const pick = (r, arr) => arr[Math.floor(r() * arr.length)];
   function matchCase(src, out) {
-    if (src.length > 1 && src === src.toUpperCase() && /[A-Z]/.test(src) && src !== "I") return out.toUpperCase();
+    if (src.length > 3 && src === src.toUpperCase() && /[A-Z]/.test(src) && src !== "I") return out.toUpperCase();
     if (/^[A-Z]/.test(src)) return out[0].toUpperCase() + out.slice(1);
     return out;
   }
@@ -147,7 +382,14 @@
           k++; j++;
           if (k < parts.length) { if (j >= tokens.length || !/^\s+$/.test(tokens[j])) { ok = false; break; } j++; }
         }
-        if (ok) { out.push(matchCase(t, choose(key, PHRASES[key]))); i = j; done = true; break; }
+        if (ok) {
+          let opts = PHRASES[key];
+          if (TRANSITIVE[key]) {
+            const nxt = tokens[j] && /^\s+$/.test(tokens[j]) ? tokens[j + 1] : null;
+            if (nxt && /^[A-Za-z']+$/.test(nxt) && !NOT_OBJECT.has(nxt.toLowerCase())) opts = TRANSITIVE[key];
+          }
+          out.push(matchCase(t, choose(key, opts))); i = j; done = true; break;
+        }
       }
       if (done) continue;
       let w = t;
@@ -197,7 +439,7 @@
     return res;
   }
 
-  const api = { translate, variants, PHRASES, WORDS, OPENERS, CLOSERS, ASIDES };
+  const api = { FUNNY_VERBS, FUNNY_NOUNS, translate, variants, PHRASES, WORDS, OPENERS, CLOSERS, ASIDES };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else root.SlangEngine = api;
 })(this);
