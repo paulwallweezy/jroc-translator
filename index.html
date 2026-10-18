@@ -342,6 +342,70 @@
   }
   PHRASES["in bed"] = ["in da pillow studio", "on da snooze throne", "in da dream pad"];
   for (const [keys, opts] of FUNNY_NOUNS) for (const k of keys) PHRASES[k] = opts;
+  // ---- Bus-driver / teacher lines (J-Roc voice, PG-13) ----
+  const BUS_LINES = [
+    [["don't make me", "do not make me"], ["don't be makin' J-Roc", "don't force da J-Roc to", "yo, don't make ya boy"]],
+    [["come back there"], ["roll up to da back like da po-po", "bring da J-Roc show to da back row", "come back there on a surprise tour"]],
+    [["come back here"], ["bring ya self back over here", "roll back to da J-Roc zone", "boomerang back over here"]],
+    [["teach you a lesson"], ["school ya real quick", "drop a knowledge bomb on ya", "give ya a free masterclass, dawg"]],
+    [["teach you"], ["school ya", "drop knowledge on ya", "learn ya"]],
+    [["lesson"], ["knowledge bomb", "masterclass", "schoolin'"]],
+    [["lessons"], ["knowledge bombs", "masterclasses", "schoolin's"]],
+    [["come sit up front", "come sit in the front"], ["come post up in da VIP section", "roll up an' chill in da front row", "come grab da front-row throne"]],
+    [["sit up front", "sit in the front"], ["post up in da VIP section", "chill in da front row", "grab da front-row throne"]],
+    [["up front"], ["in da VIP section", "in da front row", "up by da captain"]],
+    [["in front of"], ["in front of", "right in da face of", "smack in front of"]],
+    [["front"], ["VIP section", "front row", "head of da crew"]],
+    [["back of the bus"], ["back-row hood", "cheap seats", "rear VIP lounge"]],
+    [["in the back"], ["in da back-row hood", "in da cheap seats", "way back in da rear lounge"]],
+    [["stay in your seat", "stay in your seats", "stay seated"], ["keep ya booty parked", "stay glued to ya throne", "don't leave ya cushion spot, dawg"]],
+    [["keep your hands to yourself"], ["keep ya mitts in ya own hood", "keep dem paws on lockdown", "keep ya hands in ya own zip code"]],
+    [["hands to yourself"], ["mitts in ya own hood", "paws on lockdown", "hands in ya own zip code"]],
+    [["keep it down"], ["turn da volume down, dawg", "bring it down to whisper mode", "lower da decibels, homie"]],
+    [["settle down"], ["chill out, lil' homies", "bring it down a notch", "cool ya jets"]],
+    [["face forward", "face the front", "turn around"], ["eyes on da windshield", "face front like a hood ornament", "point ya dome forward"]],
+    [["sit still"], ["freeze like a statue, dawg", "no wigglin', homie", "keep it chill an' still"]],
+    [["no eating on the bus"], ["no grub in da big yellow limo", "da limo ain't a buffet, dawg", "keep ya munchies in ya backpack"]],
+    [["no eating"], ["no grub-munchin'", "da buffet's closed", "no feedin' da beast"]],
+    [["this is your last warning"], ["dis ya final notice from J-Roc", "dat's strike three, dawg", "one more an' you outta da crew"]],
+    [["last warning", "final warning"], ["final notice from J-Roc", "last strike, dawg", "one-more-an'-you're-out notice"]],
+    [["i'm writing you up", "i am writing you up", "i'll write you up", "i will write you up"], ["J-Roc's puttin' ya in da paperwork", "you gettin' a write-up remix", "J-Roc's droppin' ya name in da report"]],
+    [["writing you up"], ["puttin' ya in da paperwork", "givin' ya a write-up remix", "droppin' ya name in da report"]],
+    [["write you up"], ["put ya in da paperwork", "give ya a write-up remix", "drop ya name in da report"]],
+    [["detention"], ["da time-out lounge", "after-school lockdown", "da no-fun zone"]],
+    [["keep the aisle clear", "keep the aisles clear", "keep the aisle open", "stay out of the aisle"], ["keep da runway clear fo' takeoff", "no parkin' on da runway, dawg", "keep da hallway of shame empty"]],
+    [["in the aisle", "in the aisles"], ["on da runway", "in da hallway of shame", "on da red carpet"]],
+    [["aisle"], ["runway", "hallway of shame", "red carpet"]],
+    [["aisles"], ["runways", "hallways of shame", "red carpets"]],
+    [["principal's office"], ["big cheese's crib", "head honcho's office", "principal's VIP room"]],
+    [["principal"], ["big cheese", "head honcho", "top dawg of da school"]],
+    [["get off the bus", "get off my bus"], ["bounce off da big yellow limo", "exit da limo, dawg", "dip outta da ride"]],
+    [["line up"], ["form da posse line", "get in formation, crew", "line it up like a playlist"]],
+    [["single file"], ["one dawg at a time", "in a straight-up posse line", "conga line, no dancin'"]],
+    [["use your inside voice", "use your indoor voice"], ["switch to whisper flow", "go library mode, dawg", "use dat indoor volume"]],
+    [["inside voice", "inside voices", "indoor voice"], ["whisper flow", "library mode", "indoor volume"]],
+    [["stop yelling", "stop screaming", "stop shouting"], ["quit da screamin' concert", "cut da volume, homie", "no more hollerin'"]],
+    [["knock it off"], ["cut da drama", "shut it down, dawg", "quit da clownin'"]],
+    [["cut it out"], ["cut da nonsense", "quit da monkey bizness", "dead dat noise"]],
+    [["i'm not kidding", "i am not kidding", "i'm not joking", "i am not joking"], ["J-Roc ain't playin'", "no jokes, dawg", "dis ain't comedy hour"]],
+    [["not kidding", "not joking"], ["ain't playin'", "no jokin'", "straight serious"]],
+    [["i mean it"], ["J-Roc means it, dawg", "dis is fo' real", "straight-up serious"]],
+    [["buckle up", "put on your seatbelt", "wear your seatbelt"], ["strap in da safety bling", "lock in da lap leash", "click da seatbelt bling, dawg"]],
+    [["wait your turn"], ["wait for ya spot in da playlist", "chill till it's ya turn", "hold up till da beat drops fo' you"]],
+    [["be nice"], ["keep it respectful, dawg", "be cool like J-Roc", "show some love, homie"]],
+    [["apologize", "say sorry", "say you're sorry"], ["say ya sorry, dawg", "drop a sorry track", "make it right wit' a sorry"]],
+    [["i'm calling your parents", "i am calling your parents", "i'll call your parents", "i will call your parents"], ["J-Roc's hollerin' at ya moms an' pops", "ya OGs are gettin' a call", "J-Roc's hittin' up ya parents' bling-a-ling"]],
+    [["calling your parents"], ["hollerin' at ya moms an' pops", "hittin' up ya OGs", "ringin' ya parents' bling-a-ling"]],
+    [["your parents"], ["ya moms an' pops", "ya OGs", "ya parental crew"]],
+    [["parents"], ["OGs", "moms an' pops", "parental crew"]],
+    [["be quiet", "quiet down", "quiet"], ["zip it, dawg", "mute da mixtape", "shhh, homie"]],
+    [["pay attention"], ["lock in, dawg", "tune in to J-Roc", "eyes on da captain"]],
+    [["listen to me"], ["listen up to J-Roc", "open dem ears", "peep what J-Roc sayin'"]],
+    [["everybody", "everyone"], ["errbody", "da whole crew", "all y'all"]],
+    [["students"], ["lil' homies", "young dawgs", "crew"]],
+    [["class"], ["crew", "posse", "squad"]]
+  ];
+  for (const [keys, opts] of BUS_LINES) for (const k of keys) PHRASES[k] = opts;
   const NOT_OBJECT = new Set(["then", "and", "or", "but", "so", "at", "in", "on", "with", "before", "after", "because", "now", "today", "tonight", "later", "too", "real", "really", "first", "again", "all", "outside", "here", "there", "every", "when", "while", "if", "fast", "slowly", "together", "alone", "like", "for", "out"]);
   const OPENERS = ["Yo,", "Aight check it,", "Yo yo,", "Listen up,", "Check it,"];
   const CLOSERS = [", know'm sayin'?", ", word up.", ", straight up, dawg.", ". J-Roc out.", ", feel me?", ", fo' real."];
@@ -354,6 +418,7 @@
   const pick = (r, arr) => arr[Math.floor(r() * arr.length)];
   function matchCase(src, out) {
     if (src.length > 3 && src === src.toUpperCase() && /[A-Z]/.test(src) && src !== "I") return out.toUpperCase();
+    if (/^I($|')/.test(src)) return out;
     if (/^[A-Z]/.test(src)) return out[0].toUpperCase() + out.slice(1);
     return out;
   }
@@ -367,14 +432,9 @@
     for (let i = 0; i < tokens.length;) {
       const t = tokens[i], low = t.toLowerCase();
       if (!/^[A-Za-z']+$/.test(t)) { out.push(t); i++; continue; }
-      if (thirdPerson) {
-        // "I am" -> "J-Roc is"
-        if (low === "i" && tokens[i + 2] && tokens[i + 2].toLowerCase() === "am" && /^\s+$/.test(tokens[i + 1])) { out.push("J-Roc is"); i += 3; continue; }
-        const tp = { "i": "J-Roc", "me": "J-Roc", "my": "J-Roc's", "i'm": "J-Roc's", "mine": "J-Roc's", "myself": "J-Roc" }[low];
-        if (tp) { out.push(tp); i++; continue; }
-      }
       let done = false;
       for (const key of phraseKeys) {
+        if (thirdPerson && (key === "i am")) continue;
         const parts = key.split(" ");
         let j = i, k = 0, ok = true;
         while (k < parts.length) {
@@ -392,6 +452,12 @@
         }
       }
       if (done) continue;
+      if (thirdPerson) {
+        // "I am" -> "J-Roc is"
+        if (low === "i" && tokens[i + 2] && tokens[i + 2].toLowerCase() === "am" && /^\s+$/.test(tokens[i + 1])) { out.push("J-Roc is"); i += 3; continue; }
+        const tp = { "i": "J-Roc", "me": "J-Roc", "my": "J-Roc's", "i'm": "J-Roc's", "mine": "J-Roc's", "myself": "J-Roc" }[low];
+        if (tp) { out.push(tp); i++; continue; }
+      }
       let w = t;
       if (WORDS[low]) w = matchCase(t, choose(low, WORDS[low]));
       else if (low === "the" && r() < 0.6) w = matchCase(t, "da");
@@ -399,7 +465,7 @@
       out.push(w);
       i++;
     }
-    return out.join("");
+    return out.join("").replace(/(^\s*|[.!?]\s+)([a-z])/g, (m, a, b) => a + b.toUpperCase());
   }
 
   function translate(text, seed) {
@@ -439,7 +505,7 @@
     return res;
   }
 
-  const api = { FUNNY_VERBS, FUNNY_NOUNS, translate, variants, PHRASES, WORDS, OPENERS, CLOSERS, ASIDES };
+  const api = { BUS_LINES, FUNNY_VERBS, FUNNY_NOUNS, translate, variants, PHRASES, WORDS, OPENERS, CLOSERS, ASIDES };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else root.SlangEngine = api;
 })(this);
